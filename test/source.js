@@ -24,7 +24,7 @@ function drawCircle(x, y) {
     // Draw a red circle at the specified coordinates
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = 'green';
     ctx.fill();
     ctx.closePath();
   }
