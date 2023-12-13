@@ -26,12 +26,14 @@ window.onload = async function () {
 };
 
 function playAudio(data) {
+    if(data){
     if (data.x <= canvas.width/2) {
         console.log("ich bin links");
     }
     else {
         console.log("ich bin Rechts");
     }
+}
 }
 
 // Set to true if you want to save the data even if you reload the page.
