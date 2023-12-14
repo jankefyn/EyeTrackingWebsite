@@ -86,9 +86,7 @@ function stopAudio() {
     audioElement.pause();
     audioElement.currentTime = 0;
     audioElement = null;
-    audioContext.close().then(() => {
-      audioContext = null;
-    });
+    audioContext = null;
   }
 }
 
