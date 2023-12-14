@@ -25,19 +25,45 @@ window.onload = async function () {
 
 };
 
-function playAudio(data) {
-    
-    var canvas = document.getElementById("plotting_canvas");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+//set sound that needs to be played
+var audioFileUrl = '../sounds/amChord.wav';
 
+
+function playAudio(data) {
+    console.log("isconfirmed" + isConfirm)
+    var canvas = document.getElementById("plotting_canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     if (data != null) {
         if (data.x <= canvas.width / 2) {
+            playAudioLoop(audioFileUrl);
             console.log("ich bin links");
         }
         else {
             console.log("ich bin Rechts");
         }
+    }
+}
+
+
+// Function to load an audio file and play it in a loop
+function playAudioLoop(url) {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audioElement = new Audio(url);
+    const source = audioContext.createMediaElementSource(audioElement);
+    const gainNode = audioContext.createGain();
+
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    audioElement.loop = true;
+    audioElement.play();
+}
+// Function to stop the audio playback
+function stopAudio() {
+    if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
     }
 }
 
