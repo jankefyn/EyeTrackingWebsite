@@ -30,7 +30,6 @@ var audioFileUrl = '../sounds/amChord.wav';
 
 
 function playAudio(data) {
-    console.log("isconfirmed" + isConfirm)
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
