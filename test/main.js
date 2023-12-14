@@ -30,6 +30,7 @@ var audioLeft = "./sounds/amChord.wav";
 var audioRight = "./sounds/gChord.wav";
 var isPlaying = false;
 var lastPlayed = "";
+var firstaudioPlayed = false;
 
 
 function playAudio(data) {
@@ -39,7 +40,9 @@ function playAudio(data) {
     if (data != null) {
         if (data.x <= canvas.width / 2) {
             if (!isPlaying && lastPlayed != audioLeft) {
-                stopAudio();
+                if (firstaudioPlayed) {
+                    stopAudio();
+                }
                 lastPlayed = audioLeft
                 playAudioLoop(audioLeft);
                 lastPlayed = audioLeft;
@@ -47,7 +50,9 @@ function playAudio(data) {
         }
         else {
             if (!isPlaying && lastPlayed != audioright) {
-                stopAudio();
+                if (firstaudioPlayed) {
+                    stopAudio();
+                }
                 playAudioLoop(audioRight);
                 lastPlayed = audioRight;
             }
