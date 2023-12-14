@@ -85,10 +85,6 @@ function stopAudio() {
   if (audioElement) {
     audioElement.pause();
     audioElement.currentTime = 0;
-
-    const tracks = audioContext.getAudioTracks();
-    tracks.forEach(track => track.stop());
-
     audioElement = null;
     audioContext.close().then(() => {
       audioContext = null;
