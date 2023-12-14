@@ -26,7 +26,10 @@ window.onload = async function () {
 };
 
 //set sound that needs to be played
-var audioFileUrl = './sounds/amChord.wav';
+var audioLeft = "./sounds/amChord.wav";
+var audioRight = "./sounds/gChord.wav";
+var isPlaying = false;
+var lastPlayed = "";
 
 
 function playAudio(data) {
@@ -35,11 +38,19 @@ function playAudio(data) {
     canvas.height = window.innerHeight;
     if (data != null) {
         if (data.x <= canvas.width / 2) {
-            playAudioLoop(audioFileUrl);
-            console.log("ich bin links");
+            if (!isPlaying && lastPlayed != audioLeft) {
+                stopAudio();
+                lastPlayed = audioLeft
+                playAudioLoop(audioLeft);
+                lastPlayed = audioLeft;
+            }
         }
         else {
-            console.log("ich bin Rechts");
+            if (!isPlaying && lastPlayed != audioright) {
+                stopAudio();
+                playAudioLoop(audioRight);
+                lastPlayed = audioRight;
+            }
         }
     }
 }
@@ -57,12 +68,14 @@ function playAudioLoop(url) {
 
     audioElement.loop = true;
     audioElement.play();
+    isPlaying = true;
 }
 // Function to stop the audio playback
 function stopAudio() {
     if (audioElement) {
         audioElement.pause();
         audioElement.currentTime = 0;
+        isPlaying = false;
     }
 }
 
