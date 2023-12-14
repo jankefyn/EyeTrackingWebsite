@@ -30,7 +30,7 @@ var audioLeft = "./sounds/amChord.wav";
 var audioRight = "./sounds/gChord.wav";
 var isPlaying = false;
 var lastPlayed = "";
-var firstaudioPlayed = false;
+var firstAudioPlayed = false;
 
 
 function playAudio(data) {
@@ -40,31 +40,34 @@ function playAudio(data) {
     if (data != null) {
         if (data.x <= canvas.width / 2) {
             if (!isPlaying && lastPlayed != audioLeft) {
-                if (firstaudioPlayed) {
+                if (firstAudioPlayed) {
                     stopAudio();
                 }
                 lastPlayed = audioLeft
                 playAudioLoop(audioLeft);
+                firstAudioPlayed = true;
                 lastPlayed = audioLeft;
             }
         }
         else {
             if (!isPlaying && lastPlayed != audioright) {
-                if (firstaudioPlayed) {
+                if (firstAudioPlayed) {
                     stopAudio();
                 }
                 playAudioLoop(audioRight);
+                firstAudioPlayed = true;
                 lastPlayed = audioRight;
             }
         }
     }
 }
 
+let audioElement;
 
 // Function to load an audio file and play it in a loop
 function playAudioLoop(url) {
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const audioElement = new Audio(url);
+    audioElement = new Audio(url);
     const source = audioContext.createMediaElementSource(audioElement);
     const gainNode = audioContext.createGain();
 
