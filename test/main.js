@@ -26,6 +26,10 @@ window.onload = async function () {
 };
 
 function playAudio(data) {
+    
+    var canvas = document.getElementById("plotting_canvas");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
     if (data != null) {
         if (data.x <= canvas.width / 2) {
