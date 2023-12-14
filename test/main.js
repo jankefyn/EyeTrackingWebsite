@@ -55,6 +55,7 @@ function playAudio(data) {
                     stopAudio();
                 }
                 playAudioLoop(audioRight);
+                console.log("ich bin hier");
                 firstAudioPlayed = true;
                 lastPlayed = audioRight;
             }
@@ -66,6 +67,7 @@ let audioElement;
 
 // Function to load an audio file and play it in a loop
 function playAudioLoop(url) {
+    
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     audioElement = new Audio(url);
     const source = audioContext.createMediaElementSource(audioElement);
