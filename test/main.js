@@ -50,7 +50,7 @@ function playAudio(data) {
             }
         }
         else {
-            if (!isPlaying && lastPlayed != audioright) {
+            if (!isPlaying && lastPlayed != audioRight) {
                 if (firstAudioPlayed) {
                     stopAudio();
                 }
