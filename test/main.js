@@ -64,29 +64,36 @@ function playAudio(data) {
 }
 
 let audioElement;
+let audioContext;
 
 // Function to load an audio file and play it in a loop
 function playAudioLoop(url) {
-    
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    audioElement = new Audio(url);
-    const source = audioContext.createMediaElementSource(audioElement);
-    const gainNode = audioContext.createGain();
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  audioElement = new Audio(url);
+  const source = audioContext.createMediaElementSource(audioElement);
+  const gainNode = audioContext.createGain();
 
-    source.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+  source.connect(gainNode);
+  gainNode.connect(audioContext.destination);
 
-    audioElement.loop = true;
-    audioElement.play();
-    isPlaying = true;
+  audioElement.loop = true;
+  audioElement.play();
 }
-// Function to stop the audio playback
+
+// Function to stop the audio playback and release resources
 function stopAudio() {
-    if (audioElement) {
-        audioElement.pause();
-        audioElement.currentTime = 0;
-        isPlaying = false;
-    }
+  if (audioElement) {
+    audioElement.pause();
+    audioElement.currentTime = 0;
+
+    const tracks = audioContext.getAudioTracks();
+    tracks.forEach(track => track.stop());
+
+    audioElement = null;
+    audioContext.close().then(() => {
+      audioContext = null;
+    });
+  }
 }
 
 // Set to true if you want to save the data even if you reload the page.
