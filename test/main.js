@@ -26,7 +26,7 @@ window.onload = async function () {
 };
 
 //set sound that needs to be played
-var audioFileUrl = '../sounds/amChord.wav';
+var audioFileUrl = './sounds/amChord.wav';
 
 
 function playAudio(data) {
