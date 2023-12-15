@@ -26,8 +26,11 @@ window.onload = async function () {
 };
 
 //set sound that needs to be played
-var audioLeft = "./sounds/amChord.wav";
-var audioRight = "./sounds/gChord.wav";
+var audioLeftTop = "./sounds/amChord.wav";
+var audioRightTop = "./sounds/gChord.wav";
+var audioRightBot = "./sounds/fChord.wav";
+var audioLeftBot = "./sounds/dChord.wav";
+
 var isPlaying = false;
 var lastPlayed = "";
 var firstAudioPlayed = false;
@@ -39,27 +42,47 @@ function playAudio(data) {
     canvas.height = window.innerHeight;
     if (data != null) {
         if (data.x <= canvas.width / 2) {
-            if (!isPlaying && lastPlayed != audioLeft) {
-                if (firstAudioPlayed) {
-                    stopAudio();
+            if (data.y > canvas.height / 2) {
+                if (!isPlaying && lastPlayed != audioLeftTop) {
+                    stopAudioIfPlayed()
+                    lastPlayed = audioLeftTop
+                    playAudioLoop(audioLeftTop);
+                    firstAudioPlayed = true;
                 }
-                lastPlayed = audioLeft
-                playAudioLoop(audioLeft);
-                firstAudioPlayed = true;
-                lastPlayed = audioLeft;
+            }
+            else {
+                if (!isPlaying && lastPlayed != audioLeftBot) {
+                    stopAudioIfPlayed()
+                    lastPlayed = audioLeftBot
+                    playAudioLoop(audioLeftBot);
+                    firstAudioPlayed = true;
+                }
             }
         }
         else {
-            if (!isPlaying && lastPlayed != audioRight) {
-                if (firstAudioPlayed) {
-                    stopAudio();
+            if (data.y > canvas.height / 2) {
+                if (!isPlaying && lastPlayed != audioRightTop) {
+                    stopAudioIfPlayed()
+                    playAudioLoop(audioRightTop);
+                    firstAudioPlayed = true;
+                    lastPlayed = audioRightTop;
                 }
-                playAudioLoop(audioRight);
-                console.log("ich bin hier");
-                firstAudioPlayed = true;
-                lastPlayed = audioRight;
+            }
+            else {
+                if (!isPlaying && lastPlayed != audioRightBot) {
+                    stopAudioIfPlayed()
+                    playAudioLoop(audioRightBot);
+                    firstAudioPlayed = true;
+                    lastPlayed = audioRightBot;
+                }
             }
         }
+    }
+}
+
+function stopAudioIfPlayed() {
+    if (firstAudioPlayed) {
+        stopAudio();
     }
 }
 
@@ -68,26 +91,26 @@ let audioContext;
 
 // Function to load an audio file and play it in a loop
 function playAudioLoop(url) {
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  audioElement = new Audio(url);
-  const source = audioContext.createMediaElementSource(audioElement);
-  const gainNode = audioContext.createGain();
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    audioElement = new Audio(url);
+    const source = audioContext.createMediaElementSource(audioElement);
+    const gainNode = audioContext.createGain();
 
-  source.connect(gainNode);
-  gainNode.connect(audioContext.destination);
+    source.connect(gainNode);
+    gainNode.connect(audioContext.destination);
 
-  audioElement.loop = true;
-  audioElement.play();
+    audioElement.loop = true;
+    audioElement.play();
 }
 
 // Function to stop the audio playback and release resources
 function stopAudio() {
-  if (audioElement) {
-    audioElement.pause();
-    audioElement.currentTime = 0;
-    audioElement = null;
-    audioContext = null;
-  }
+    if (audioElement) {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        audioElement = null;
+        audioContext = null;
+    }
 }
 
 // Set to true if you want to save the data even if you reload the page.
