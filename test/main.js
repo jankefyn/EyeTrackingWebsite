@@ -57,7 +57,7 @@ const activeLoops = new Set();
 let loopStartTime = 0;
 const fadeTime = 0.050;
 
-loadLoops();
+
 
 /***************************************************************************/
 
@@ -181,7 +181,7 @@ function changeLoop(index) {
         }
     }
 
-    
+
 }
 
 function displayIntensity() {
