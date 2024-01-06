@@ -29,6 +29,7 @@ function PopUpInstruction(){
     }
   }).then(isConfirm => {
     ShowCalibrationPoint();
+    loadLoops();
   });
 
 }
