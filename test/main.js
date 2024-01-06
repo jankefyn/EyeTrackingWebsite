@@ -206,17 +206,17 @@ function playAudio(data) {
             if (data.y > canvas.height / 2) {
                 changeLoop(0);
             }
+            else {
+                changeLoop(1);
+            }
         }
         else {
-            changeLoop(1);
-        }
-    }
-    else {
-        if (data.y > canvas.height / 2) {
-            changeLoop(2);
-        }
-        else {
-            changeLoop(3);
+            if (data.y > canvas.height / 2) {
+                changeLoop(2);
+            }
+            else {
+                changeLoop(3);
+            }
         }
     }
 }
