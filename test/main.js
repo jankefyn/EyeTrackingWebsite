@@ -150,6 +150,7 @@ function loadLoops() {
 
     const decodeContext = new AudioContext();
     for (let i = 0; i < sounds.length; i++) {
+        console.log("sound"+sounds[i]);
         decodeContext.decodeAudioData(sounds[i], (buffer) => {
             loops[i] = new Loop(buffer, levels[i])
         });
