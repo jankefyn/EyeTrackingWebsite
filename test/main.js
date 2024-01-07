@@ -105,7 +105,6 @@ class Loop {
         this.gain = gain;
 
         activeLoops.add(this);
-        this.button.classList.add('active');
     }
 
     stop(time) {
@@ -117,8 +116,6 @@ class Loop {
         this.gain = null;
 
         activeLoops.delete(this);
-        this.button.classList.remove('active');
-        this.button.style.opacity = 0.25;
     }
 
     displayIntensity() {
@@ -137,7 +134,6 @@ class Loop {
             }
 
             const opacity = Math.min(1, 0.25 + 10 * Math.sqrt(sum / fftSize));
-            this.button.style.opacity = opacity;
         }
     }
 
