@@ -58,7 +58,7 @@ const fadeTime = 0.050;
 
 let loopStartTime = 0;
 let lastPlayed = 5;
-let lastLoop = loops[0];
+let lastLoop;
 
 
 
@@ -165,8 +165,10 @@ async function loadLoops() {
 
 function changeLoop(index) {
     const loop = loops[index];
-    if(loop!=lastLoop){
-        lastLoop.stop(time);
+    if (lastLoop) {
+        if (loop != lastLoop) {
+            lastLoop.stop(time);
+        }
     }
     lastLoop = loop;
 
