@@ -58,7 +58,6 @@ const fadeTime = 0.050;
 
 let loopStartTime = 0;
 let lastPlayed = 5;
-let lastLoop;
 
 
 
@@ -164,7 +163,7 @@ async function loadLoops() {
 
 function changeLoop(index) {
 
-    console.log(" ich change auf: "+ index);
+    console.log(" ich change auf: " + index);
     const loop = loops[index];
     if (audioContext === null)
         audioContext = new AudioContext();
@@ -172,11 +171,8 @@ function changeLoop(index) {
     if (loop) {
         const time = audioContext.currentTime;
 
-        if (lastLoop) {
-            if (loop != lastLoop) {
-                console.log("ich stoppe : " + loop);
-                lastLoop.stop(time);
-            }
+        if (lastPlayed = index) {
+            stopLoop(index);
         }
 
         let syncLoopPhase = true;
@@ -187,9 +183,15 @@ function changeLoop(index) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-        console.log("ich starte: "+ loop);
+        console.log("ich starte: " + loop.AudioContext);
+        lastPlayed = index;
         loop.start(time, syncLoopPhase);
     }
+}
+
+function stopLoop(index) {
+    const loop = loops[index];
+    loop.stop(audioContext.currentTime);
 }
 
 function displayIntensity() {
@@ -213,21 +215,17 @@ function playAudio(data) {
         if (data.x <= canvas.width / 2) {
             if (data.y > canvas.height / 2 && lastPlayed != 0) {
                 changeLoop(0);
-                lastPlayed = 0;
             }
             else if (lastPlayed != 1) {
                 changeLoop(1);
-                lastPlayed = 1;
             }
         }
         else {
             if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(2);
-                lastPlayed = 2;
             }
             else if (lastPlayed != 3) {
                 changeLoop(3);
-                lastPlayed = 3;
             }
         }
     }
