@@ -165,25 +165,29 @@ async function loadLoops() {
 
 function changeLoop(index) {
     const loop = loops[index];
-    if (lastLoop) {
-        if (loop != lastLoop) {
-            lastLoop.stop(time);
-        }
-    }
-    lastLoop = loop;
+
 
     if (audioContext === null)
         audioContext = new AudioContext();
 
     if (loop) {
         const time = audioContext.currentTime;
+
+        if (lastLoop) {
+            if (loop != lastLoop) {
+                lastLoop.stop(time);
+            }
+        }
+
         let syncLoopPhase = true;
 
+        lastLoop = loop;
         if (activeLoops.size === 0) {
             loopStartTime = time;
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
+        loop.start(time, syncLoopPhase);
     }
 }
 
