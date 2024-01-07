@@ -160,7 +160,7 @@ async function loadLoops() {
 }
 
 
-function changeLoop(index, stopBoolean) {
+function changeLoop(index, checker) {
     const loop = loops[index];
     if (audioContext === null)
         audioContext = new AudioContext();
@@ -168,18 +168,17 @@ function changeLoop(index, stopBoolean) {
     if (loop) {
         const time = audioContext.currentTime;
         let syncLoopPhase = true;
-        lastLoop = loop;
 
         if (activeLoops.size === 0) {
             loopStartTime = time;
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-        if (stopBoolean && loop.isPlaying) {
+        if (checker = 0 && loop.isPlaying) {
             console.log("ich versuche zu stoppen");
             loop.stop(time);
         }
-        if (!stopBoolean && !loop.isPlaying) {
+        if (checker = 1 && !loop.isPlaying) {
             console.log("ich versuche zu starten");
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
@@ -209,22 +208,22 @@ function playAudio(data) {
         if (data != null) {
             if (data.x <= canvas.width / 2) {
                 if (data.y > canvas.height / 2 && lastPlayed != 0) {
-                    changeLoop(lastPlayed, true);
-                    changeLoop(0, false);
+                    changeLoop(lastPlayed, 0);
+                    changeLoop(0, 1);
                 }
                 else if (lastPlayed != 1) {
-                    changeLoop(lastPlayed, true);
-                    changeLoop(1, false);
+                    changeLoop(lastPlayed, 0);
+                    changeLoop(1, 1);
                 }
             }
             else {
                 if (data.y > canvas.height / 2 && lastPlayed != 2) {
-                    changeLoop(lastPlayed, true);
-                    changeLoop(2, false);
+                    changeLoop(lastPlayed, 0);
+                    changeLoop(2, 1);
                 }
                 else if (lastPlayed != 3) {
-                    changeLoop(lastPlayed, true);
-                    changeLoop(3, false);
+                    changeLoop(lastPlayed, 0);
+                    changeLoop(3, 1);
                 }
             }
         }
