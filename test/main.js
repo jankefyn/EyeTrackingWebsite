@@ -161,8 +161,6 @@ async function loadLoops() {
 
 
 function changeLoop(index, stopBoolean) {
-
-
     const loop = loops[index];
     if (audioContext === null)
         audioContext = new AudioContext();
@@ -178,9 +176,11 @@ function changeLoop(index, stopBoolean) {
             window.requestAnimationFrame(displayIntensity);
         }
         if (stopBoolean && loop.isPlaying) {
-            loop.stop(time)
+            console.log("ich versuche zu stoppen");
+            loop.stop(time);
         }
         if (!stopBoolean && !loop.isPlaying) {
+            console.log("ich versuche zu starten");
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
         }
