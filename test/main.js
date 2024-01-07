@@ -55,6 +55,7 @@ const levels = [0, 0, 0, 0];
 const loops = [];
 const activeLoops = new Set();
 let loopStartTime = 0;
+let lastPlayed = 5;
 const fadeTime = 0.050;
 
 
@@ -204,19 +205,23 @@ function playAudio(data) {
     canvas.height = window.innerHeight;
     if (data != null) {
         if (data.x <= canvas.width / 2) {
-            if (data.y > canvas.height / 2) {
+            if (data.y > canvas.height / 2 && lastPlayed != 0) {
                 changeLoop(0);
+                lastPlayed = 0;
             }
-            else {
+            else if (lastPlayed != 1) {
                 changeLoop(1);
+                lastPlayed = 1;
             }
         }
         else {
-            if (data.y > canvas.height / 2) {
+            if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(2);
+                lastPlayed = 2;
             }
-            else {
+            else if (lastPlayed != 3) {
                 changeLoop(3);
+                lastPlayed = 3;
             }
         }
     }
