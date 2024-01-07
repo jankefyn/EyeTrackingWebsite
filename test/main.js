@@ -172,7 +172,7 @@ function changeLoop(index) {
         const time = audioContext.currentTime;
 
         if (lastPlayed = index) {
-            stopLoop(index);
+            stopLoop(index, time);
         }
 
         let syncLoopPhase = true;
@@ -189,9 +189,9 @@ function changeLoop(index) {
     }
 }
 
-function stopLoop(index) {
+function stopLoop(index, time) {
     const loop = loops[index];
-    loop.stop(audioContext.currentTime);
+    loop.stop(time);
 }
 
 function displayIntensity() {
