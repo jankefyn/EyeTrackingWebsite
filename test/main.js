@@ -146,16 +146,20 @@ class Loop {
     }
 }
 
-function loadLoops() {
+async function loadAudioFile(url) {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    return arrayBuffer;
+}
 
+async function loadLoops() {
     const decodeContext = new AudioContext();
     for (let i = 0; i < sounds.length; i++) {
-        console.log("sound"+sounds[i]);
-        decodeContext.decodeAudioData(sounds[i], (buffer) => {
-            loops[i] = new Loop(buffer, levels[i])
+        const audioFile = await loadAudioFile(sounds[i]);
+        decodeContext.decodeAudioData(audioFile, (buffer) => {
+            loops[i] = new Loop(buffer, levels[i]);
         });
-    };
-
+    }
 }
 
 
