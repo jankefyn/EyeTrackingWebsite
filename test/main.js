@@ -138,7 +138,6 @@ class Loop {
             const opacity = Math.min(1, 0.25 + 10 * Math.sqrt(sum / fftSize));
         }
     }
-
     get isPlaying() {
         return (this.source !== null);
     }
@@ -161,37 +160,32 @@ async function loadLoops() {
 }
 
 
-function changeLoop(index) {
+function changeLoop(index, stopBoolean) {
 
-    console.log(" ich change auf: " + index);
+
     const loop = loops[index];
     if (audioContext === null)
         audioContext = new AudioContext();
 
     if (loop) {
         const time = audioContext.currentTime;
-
-        if (lastPlayed = index) {
-            stopLoop(index, time);
-        }
-
         let syncLoopPhase = true;
-
         lastLoop = loop;
+
         if (activeLoops.size === 0) {
             loopStartTime = time;
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-        console.log("ich starte: " + loop.AudioContext);
-        lastPlayed = index;
-        loop.start(time, syncLoopPhase);
+        if (stopBoolean && loop.isPlaying) {
+            loop.stop(time)
+        }
+        if (!stopBoolean && !loop.isPlaying) {
+            loop.start(time, syncLoopPhase);
+            lastPlayed = index;
+        }
+        
     }
-}
-
-function stopLoop(index, time) {
-    const loop = loops[index];
-    loop.stop(time);
 }
 
 function displayIntensity() {
@@ -211,21 +205,27 @@ function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    if (data != null) {
-        if (data.x <= canvas.width / 2) {
-            if (data.y > canvas.height / 2 && lastPlayed != 0) {
-                changeLoop(0);
+    if (lastPlayed != 5) {
+        if (data != null) {
+            if (data.x <= canvas.width / 2) {
+                if (data.y > canvas.height / 2 && lastPlayed != 0) {
+                    changeLoop(lastPlayed, true);
+                    changeLoop(0, false);
+                }
+                else if (lastPlayed != 1) {
+                    changeLoop(lastPlayed, true);
+                    changeLoop(1, false);
+                }
             }
-            else if (lastPlayed != 1) {
-                changeLoop(1);
-            }
-        }
-        else {
-            if (data.y > canvas.height / 2 && lastPlayed != 2) {
-                changeLoop(2);
-            }
-            else if (lastPlayed != 3) {
-                changeLoop(3);
+            else {
+                if (data.y > canvas.height / 2 && lastPlayed != 2) {
+                    changeLoop(lastPlayed, true);
+                    changeLoop(2, false);
+                }
+                else if (lastPlayed != 3) {
+                    changeLoop(lastPlayed, true);
+                    changeLoop(3, false);
+                }
             }
         }
     }
