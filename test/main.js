@@ -118,7 +118,6 @@ class Loop {
 
         this.source = null;
         this.gain = null;
-
         activeLoops.delete(this);
     }
 
@@ -164,9 +163,9 @@ async function loadLoops() {
 
 
 function changeLoop(index) {
+
+    console.log(" ich change auf: "+ index);
     const loop = loops[index];
-
-
     if (audioContext === null)
         audioContext = new AudioContext();
 
@@ -175,6 +174,7 @@ function changeLoop(index) {
 
         if (lastLoop) {
             if (loop != lastLoop) {
+                console.log("ich stoppe : " + loop);
                 lastLoop.stop(time);
             }
         }
@@ -187,6 +187,7 @@ function changeLoop(index) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
+        console.log("ich starte: "+ loop);
         loop.start(time, syncLoopPhase);
     }
 }
