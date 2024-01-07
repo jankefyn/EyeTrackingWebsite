@@ -128,4 +128,4 @@ function Restart() {
     webgazer.clearData();
     ClearCalibration();
     PopUpInstruction();
-}
+} 

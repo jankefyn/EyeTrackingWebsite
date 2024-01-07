@@ -54,9 +54,12 @@ const sounds = ['../test/sounds/amChord.wav', '../test/sounds/dChord.wav', '../t
 const levels = [0, 0, 0, 0];
 const loops = [];
 const activeLoops = new Set();
+const fadeTime = 0.050;
+
 let loopStartTime = 0;
 let lastPlayed = 5;
-const fadeTime = 0.050;
+let lastLoop;
+
 
 
 
@@ -162,6 +165,10 @@ async function loadLoops() {
 
 function changeLoop(index) {
     const loop = loops[index];
+    if(loop!=lastLoop){
+        lastLoop.stop(time);
+    }
+    lastLoop = loop;
 
     if (audioContext === null)
         audioContext = new AudioContext();
@@ -175,15 +182,7 @@ function changeLoop(index) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-
-        if (!loop.isPlaying) {
-            loop.start(time, syncLoopPhase);
-        } else {
-            loop.stop(time);
-        }
     }
-
-
 }
 
 function displayIntensity() {
