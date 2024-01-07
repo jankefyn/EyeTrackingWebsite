@@ -58,7 +58,7 @@ const fadeTime = 0.050;
 
 let loopStartTime = 0;
 let lastPlayed = 5;
-let lastLoop;
+let lastLoop = loops[0];
 
 
 
