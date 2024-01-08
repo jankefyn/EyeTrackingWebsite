@@ -23,14 +23,18 @@ window.onload = async function () {
     setup();
 
 };
+
+let oscillator = null;
+let gainNode = null;
+
 function playAudio(data) {
-    if(oscillator){
+    if (oscillator != null) {
         oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
     }
-    if(gainNode){
+    if (gainNode != null) {
         gainNode.gain.value = (data.y / HEIGHT) * maxVol;
     }
-    
+
 }
 
 function setAudio() {
@@ -41,8 +45,8 @@ function setAudio() {
     const audioCtx = new AudioContext();
 
     // create Oscillator and gain node
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    oscillator = audioCtx.createOscillator();
+    gainNode = audioCtx.createGain();
 
     // connect oscillator to gain node to speakers
     oscillator.connect(gainNode);
