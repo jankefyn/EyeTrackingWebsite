@@ -14,37 +14,6 @@ window.onload = async function () {
 
     //Set up the webgazer video feedback. and audio
     var setup = function () {
-        // create web audio api context
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const audioCtx = new AudioContext();
-
-        // create Oscillator and gain node
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-
-        // connect oscillator to gain node to speakers
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-
-        // create initial theremin frequency and volume values
-        const WIDTH = window.innerWidth;
-        const HEIGHT = window.innerHeight;
-
-        const maxFreq = 6000;
-        const maxVol = 0.02;
-        const initialVol = 0.001;
-
-        // set options for the oscillator
-        oscillator.detune.value = 100; // value in cents
-        oscillator.start(0);
-
-        oscillator.onended = function () {
-            console.log('Your tone has now stopped playing!');
-        };
-
-        gainNode.gain.value = initialVol;
-        gainNode.gain.minValue = initialVol;
-        gainNode.gain.maxValue = initialVol;
         //Set up the main canvas. The main canvas is used to calibrate the webgazer.
         var canvas = document.getElementById("plotting_canvas");
         canvas.width = window.innerWidth;
@@ -59,6 +28,41 @@ function playAudio(data) {
     gainNode.gain.value = (data.y / HEIGHT) * maxVol;
 }
 
+function setAudio() {
+
+    console.log("hallo ich bin hier");
+    // create web audio api context
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContext();
+
+    // create Oscillator and gain node
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    // connect oscillator to gain node to speakers
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // create initial theremin frequency and volume values
+    const WIDTH = window.innerWidth;
+    const HEIGHT = window.innerHeight;
+
+    const maxFreq = 6000;
+    const maxVol = 0.02;
+    const initialVol = 0.001;
+
+    // set options for the oscillator
+    oscillator.detune.value = 100; // value in cents
+    oscillator.start(0);
+
+    oscillator.onended = function () {
+        console.log('Your tone has now stopped playing!');
+    };
+
+    gainNode.gain.value = initialVol;
+    gainNode.gain.minValue = initialVol;
+    gainNode.gain.maxValue = initialVol;
+}
 // Set to true if you want to save the data even if you reload the page.
 window.saveDataAcrossSessions = true;
 
