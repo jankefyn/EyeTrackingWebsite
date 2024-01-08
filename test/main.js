@@ -210,7 +210,7 @@ function playAudio(data) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
             }
-            else if (lastPlayed != 1) {
+            if (data.y <= canvas.height / 2 && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
             }
@@ -220,7 +220,7 @@ function playAudio(data) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
             }
-            else if (lastPlayed != 3) {
+            if (data.y <= canvas.height / 2 && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
             }
