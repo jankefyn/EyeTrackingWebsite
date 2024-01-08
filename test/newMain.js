@@ -12,9 +12,39 @@ window.onload = async function () {
         .showPredictionPoints(true) /* shows a square every 100 milliseconds where current prediction is */
         .applyKalmanFilter(true); /* Kalman Filter defaults to on. Can be toggled by user. */
 
-    //Set up the webgazer video feedback.
+    //Set up the webgazer video feedback. and audio
     var setup = function () {
+        // create web audio api context
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
 
+        // create Oscillator and gain node
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        // connect oscillator to gain node to speakers
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        // create initial theremin frequency and volume values
+        const WIDTH = window.innerWidth;
+        const HEIGHT = window.innerHeight;
+
+        const maxFreq = 6000;
+        const maxVol = 0.02;
+        const initialVol = 0.001;
+
+        // set options for the oscillator
+        oscillator.detune.value = 100; // value in cents
+        oscillator.start(0);
+
+        oscillator.onended = function () {
+            console.log('Your tone has now stopped playing!');
+        };
+
+        gainNode.gain.value = initialVol;
+        gainNode.gain.minValue = initialVol;
+        gainNode.gain.maxValue = initialVol;
         //Set up the main canvas. The main canvas is used to calibrate the webgazer.
         var canvas = document.getElementById("plotting_canvas");
         canvas.width = window.innerWidth;
@@ -24,93 +54,9 @@ window.onload = async function () {
     setup();
 
 };
-
-//set sound that needs to be played
-var audioLeftTop = "./sounds/amChord.wav";
-var audioRightTop = "./sounds/gChord.wav";
-var audioRightBot = "./sounds/fChord.wav";
-var audioLeftBot = "./sounds/dChord.wav";
-
-var isPlaying = false;
-var lastPlayed = "";
-var firstAudioPlayed = false;
-
-
 function playAudio(data) {
-    var canvas = document.getElementById("plotting_canvas");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    if (data != null) {
-        if (data.x <= canvas.width / 2) {
-            if (data.y > canvas.height / 2) {
-                if (!isPlaying && lastPlayed != audioLeftTop) {
-                    stopAudioIfPlayed()
-                    lastPlayed = audioLeftTop
-                    playAudioLoop(audioLeftTop);
-                    firstAudioPlayed = true;
-                }
-            }
-            else {
-                if (!isPlaying && lastPlayed != audioLeftBot) {
-                    stopAudioIfPlayed()
-                    lastPlayed = audioLeftBot
-                    playAudioLoop(audioLeftBot);
-                    firstAudioPlayed = true;
-                }
-            }
-        }
-        else {
-            if (data.y > canvas.height / 2) {
-                if (!isPlaying && lastPlayed != audioRightTop) {
-                    stopAudioIfPlayed()
-                    playAudioLoop(audioRightTop);
-                    firstAudioPlayed = true;
-                    lastPlayed = audioRightTop;
-                }
-            }
-            else {
-                if (!isPlaying && lastPlayed != audioRightBot) {
-                    stopAudioIfPlayed()
-                    playAudioLoop(audioRightBot);
-                    firstAudioPlayed = true;
-                    lastPlayed = audioRightBot;
-                }
-            }
-        }
-    }
-}
-
-function stopAudioIfPlayed() {
-    if (firstAudioPlayed) {
-        stopAudio();
-    }
-}
-
-let audioElement;
-let audioContext;
-
-// Function to load an audio file and play it in a loop
-function playAudioLoop(url) {
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    audioElement = new Audio(url);
-    const source = audioContext.createMediaElementSource(audioElement);
-    const gainNode = audioContext.createGain();
-
-    source.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    audioElement.loop = true;
-    audioElement.play();
-}
-
-// Function to stop the audio playback and release resources
-function stopAudio() {
-    if (audioElement) {
-        audioElement.pause();
-        audioElement.currentTime = 0;
-        audioElement = null;
-        audioContext = null;
-    }
+    oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
+    gainNode.gain.value = (data.y / HEIGHT) * maxVol;
 }
 
 // Set to true if you want to save the data even if you reload the page.

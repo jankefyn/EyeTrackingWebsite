@@ -174,6 +174,7 @@ function changeLoop(index, checker) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
+        console.log("checker " + checker);
         if (checker = 1 && !loop.isPlaying) {
             console.log("ich versuche zu starten "+ index);
             loop.start(time, syncLoopPhase);
