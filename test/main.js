@@ -57,7 +57,7 @@ const activeLoops = new Set();
 const fadeTime = 0.050;
 
 let loopStartTime = 0;
-let lastPlayed = 5;
+let lastPlayed = 0;
 
 
 
@@ -178,7 +178,7 @@ function changeLoop(index, checker) {
             console.log("ich versuche zu stoppen");
             loop.stop(time);
         }
-        if (checker = 1) {
+        if (checker = 1 && !loop.isPlaying) {
             console.log("ich versuche zu starten");
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
@@ -204,7 +204,7 @@ function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    if (lastPlayed != 5) {
+   
         if (data != null) {
             if (data.x <= canvas.width / 2) {
                 if (data.y > canvas.height / 2 && lastPlayed != 0) {
@@ -231,5 +231,4 @@ function playAudio(data) {
                 }
             }
         }
-    }
 }
