@@ -24,8 +24,13 @@ window.onload = async function () {
 
 };
 function playAudio(data) {
-    oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
-    gainNode.gain.value = (data.y / HEIGHT) * maxVol;
+    if(oscillator){
+        oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
+    }
+    if(gainNode){
+        gainNode.gain.value = (data.y / HEIGHT) * maxVol;
+    }
+    
 }
 
 function setAudio() {
