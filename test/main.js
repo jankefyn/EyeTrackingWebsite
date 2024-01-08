@@ -174,16 +174,15 @@ function changeLoop(index, checker) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-        console.log("checker " + checker);
-        if (checker = 1 && !loop.isPlaying) {
-            console.log("ich versuche zu starten "+ index);
+        if (checker === 1 && !loop.isPlaying) {
+            console.log("ich versuche zu starten " + index);
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
-        }else if(checker = 0){
-            console.log("ich versuche zu stoppen " + index );
+        } else if (checker === 0) {
+            console.log("ich versuche zu stoppen " + index);
             loop.stop(time);
         }
-        
+
     }
 }
 
@@ -204,27 +203,27 @@ function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-   
-        if (data != null) {
-            if (data.x <= canvas.width / 2) {
-                if (data.y > canvas.height / 2 && lastPlayed != 0) {
-                    changeLoop(lastPlayed, 0);
-                    changeLoop(0, 1);
-                }
-                else if (lastPlayed != 1) {
-                    changeLoop(lastPlayed, 0);
-                    changeLoop(1, 1);
-                }
+
+    if (data != null) {
+        if (data.x <= canvas.width / 2) {
+            if (data.y > canvas.height / 2 && lastPlayed != 0) {
+                changeLoop(lastPlayed, 0);
+                changeLoop(0, 1);
             }
-            else {
-                if (data.y > canvas.height / 2 && lastPlayed != 2) {
-                    changeLoop(lastPlayed, 0);
-                    changeLoop(2, 1);
-                }
-                else if (lastPlayed != 3) {
-                    changeLoop(lastPlayed, 0);
-                    changeLoop(3, 1);
-                }
+            else if (lastPlayed != 1) {
+                changeLoop(lastPlayed, 0);
+                changeLoop(1, 1);
             }
         }
+        else {
+            if (data.y > canvas.height / 2 && lastPlayed != 2) {
+                changeLoop(lastPlayed, 0);
+                changeLoop(2, 1);
+            }
+            else if (lastPlayed != 3) {
+                changeLoop(lastPlayed, 0);
+                changeLoop(3, 1);
+            }
+        }
+    }
 }
