@@ -178,7 +178,7 @@ function changeLoop(index, checker) {
             console.log("ich versuche zu stoppen");
             loop.stop(time);
         }
-        if (checker = 1 && !loop.isPlaying) {
+        if (checker = 1) {
             console.log("ich versuche zu starten");
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
@@ -208,20 +208,24 @@ function playAudio(data) {
         if (data != null) {
             if (data.x <= canvas.width / 2) {
                 if (data.y > canvas.height / 2 && lastPlayed != 0) {
+                    console.log("ich starté:0");
                     changeLoop(lastPlayed, 0);
                     changeLoop(0, 1);
                 }
                 else if (lastPlayed != 1) {
+                    console.log("ich starté:1");
                     changeLoop(lastPlayed, 0);
                     changeLoop(1, 1);
                 }
             }
             else {
                 if (data.y > canvas.height / 2 && lastPlayed != 2) {
+                    console.log("ich starté:2");
                     changeLoop(lastPlayed, 0);
                     changeLoop(2, 1);
                 }
                 else if (lastPlayed != 3) {
+                    console.log("ich starté:3");
                     changeLoop(lastPlayed, 0);
                     changeLoop(3, 1);
                 }
