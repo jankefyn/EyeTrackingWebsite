@@ -174,14 +174,13 @@ function changeLoop(index, checker) {
             syncLoopPhase = false;
             window.requestAnimationFrame(displayIntensity);
         }
-        if (checker = 0 && loop.isPlaying) {
-            console.log("ich versuche zu stoppen");
-            loop.stop(time);
-        }
         if (checker = 1 && !loop.isPlaying) {
-            console.log("ich versuche zu starten");
+            console.log("ich versuche zu starten "+ index);
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
+        }else if(checker = 0){
+            console.log("ich versuche zu stoppen " + index );
+            loop.stop(time);
         }
         
     }
@@ -208,21 +207,21 @@ function playAudio(data) {
         if (data != null) {
             if (data.x <= canvas.width / 2) {
                 if (data.y > canvas.height / 2 && lastPlayed != 0) {
-                    changeLoop(0, 0);
+                    changeLoop(lastPlayed, 0);
                     changeLoop(0, 1);
                 }
                 else if (lastPlayed != 1) {
-                    changeLoop(1, 0);
+                    changeLoop(lastPlayed, 0);
                     changeLoop(1, 1);
                 }
             }
             else {
                 if (data.y > canvas.height / 2 && lastPlayed != 2) {
-                    changeLoop(2, 0);
+                    changeLoop(lastPlayed, 0);
                     changeLoop(2, 1);
                 }
                 else if (lastPlayed != 3) {
-                    changeLoop(3, 0);
+                    changeLoop(lastPlayed, 0);
                     changeLoop(3, 1);
                 }
             }
