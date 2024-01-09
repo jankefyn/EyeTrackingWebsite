@@ -26,6 +26,11 @@ window.onload = async function () {
 
 let oscillator = null;
 let gainNode = null;
+const WIDTH = window.innerWidth;
+const HEIGHT = window.innerHeight;
+const initialVol = 0.001;
+const maxFreq = 6000;
+const maxVol = 0.02;
 
 function playAudio(data) {
     if (oscillator != null) {
@@ -51,14 +56,6 @@ function setAudio() {
     // connect oscillator to gain node to speakers
     oscillator.connect(gainNode);
     gainNode.connect(audioCtx.destination);
-
-    // create initial theremin frequency and volume values
-    const WIDTH = window.innerWidth;
-    const HEIGHT = window.innerHeight;
-
-    const maxFreq = 6000;
-    const maxVol = 0.02;
-    const initialVol = 0.001;
 
     // set options for the oscillator
     oscillator.detune.value = 100; // value in cents
