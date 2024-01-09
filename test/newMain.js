@@ -33,12 +33,15 @@ const maxFreq = 6000;
 const maxVol = 0.02;
 
 function playAudio(data) {
-    if (oscillator != null) {
-        oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
+    if (data) {
+        if (oscillator != null) {
+            oscillator.frequency.value = (data.x / WIDTH) * maxFreq;
+        }
+        if (gainNode != null) {
+            gainNode.gain.value = (data.y / HEIGHT) * maxVol;
+        }
     }
-    if (gainNode != null) {
-        gainNode.gain.value = (data.y / HEIGHT) * maxVol;
-    }
+
 
 }
 

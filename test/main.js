@@ -54,7 +54,7 @@ const sounds = ['../test/sounds/amChord.wav', '../test/sounds/dChord.wav', '../t
 const levels = [0, 0, 0, 0];
 const loops = [];
 const activeLoops = new Set();
-const fadeTime = 0.050;
+const fadeTime = 0.150;
 
 let loopStartTime = 0;
 let lastPlayed = 0;
