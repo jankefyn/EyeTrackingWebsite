@@ -135,6 +135,7 @@ html, body {
     grid-template-columns: 1fr 1fr; /* Zwei Spalten */
     grid-template-rows: 1fr 1fr; /* Zwei Zeilen */
     height: 100%; /* Nimm die gesamte Höhe des Bildschirms ein */
+    width: 100%!important;
     margin: 0 !important ;
     padding: 0 !important ;
   }
