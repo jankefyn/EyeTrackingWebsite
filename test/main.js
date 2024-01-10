@@ -203,26 +203,35 @@ function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    const box1 = document.querySelector('.box1');
+    const box2 = document.querySelector('.box1');
+    const box3 = document.querySelector('.box1');
+    const box4 = document.querySelector('.box1');
+
 
     if (data != null) {
         if (data.x <= canvas.width / 2) {
             if (data.y > canvas.height / 2 && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
+                box1.style.backgroundColor = 'orange';
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
+                box2.style.backgroundColor = 'orange';
             }
         }
         else {
             if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
+                box3.style.backgroundColor = 'orange';
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
+                box4.style.backgroundColor = 'orange';
             }
         }
     }
