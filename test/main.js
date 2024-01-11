@@ -8,9 +8,9 @@ window.onload = async function () {
         })
         .saveDataAcrossSessions(true)
         .begin();
-    webgazer.showVideoPreview(true) /* shows all video previews */
+    webgazer.showVideoPreview(false) /* shows all video previews */
         .showPredictionPoints(true) /* shows a square every 100 milliseconds where current prediction is */
-        .applyKalmanFilter(true); /* Kalman Filter defaults to on. Can be toggled by user. */
+        .applyKalmanFilter(false); /* Kalman Filter defaults to on. Can be toggled by user. */
 
     //Set up the webgazer video feedback.
     var setup = function () {
@@ -203,10 +203,7 @@ function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const box1 = document.querySelector('.box1');
-    const box2 = document.querySelector('.box1');
-    const box3 = document.querySelector('.box1');
-    const box4 = document.querySelector('.box1');
+
 
 
     if (data != null) {
@@ -214,25 +211,62 @@ function playAudio(data) {
             if (data.y > canvas.height / 2 && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
-                box1.style.backgroundColor = 'orange';
+                changecolor(1);
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
-                box2.style.backgroundColor = 'orange';
+                changecolor(2);
             }
         }
         else {
             if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
-                box3.style.backgroundColor = 'orange';
+                changecolor(3);
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
-                box4.style.backgroundColor = 'orange';
+                changecolor(4);
             }
         }
     }
+}
+
+function changecolor(boxIndex) {
+    //switch the box colours with the boxIndex and if not active switch back
+    const box1 = document.querySelector('.box1');
+    const box2 = document.querySelector('.box2');
+    const box3 = document.querySelector('.box3');
+    const box4 = document.querySelector('.box4');
+
+    switch (boxIndex) {
+        case (1):
+            box1.style.backgroundColor = "#FFB347";
+            box2.style.backgroundColor = "#FDFD96";
+            box3.style.backgroundColor = "#6A93B0";
+            box4.style.backgroundColor = "#77DD77";
+            break;
+        case (2):
+            box1.style.backgroundColor = "#EFBE7D";
+            box2.style.backgroundColor = "#FFFF00";
+            box3.style.backgroundColor = "#6A93B0";
+            box4.style.backgroundColor = "#77DD77";
+            break;
+        case (3):
+            box1.style.backgroundColor = "#EFBE7D";
+            box2.style.backgroundColor = "#FDFD96";
+            box3.style.backgroundColor = "#0000FF";
+            box4.style.backgroundColor = "#77DD77";
+            break;
+        case (4):
+            box1.style.backgroundColor = "#EFBE7D";
+            box2.style.backgroundColor = "#FDFD96";
+            box3.style.backgroundColor = "#6A93B0";
+            box4.style.backgroundColor = "#008000";
+            break;
+
+    }
+
 }

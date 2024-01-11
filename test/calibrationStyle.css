@@ -156,7 +156,7 @@ html, body {
     grid-row: 1 / 2; /* Erste Zeile */
     background-color: blue; /* Hintergrundfarbe für Box 2 */
   }
-  
+
   .box3 {
     grid-column: 1 / 2; /* Erste Spalte */
     grid-row: 2 / 3; /* Zweite Zeile */
