@@ -216,14 +216,14 @@ function playAudio(data) {
             if (data.y <= canvas.height / 2 && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
-                changecolor(2);
+                changecolor(3);
             }
         }
         else {
             if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
-                changecolor(3);
+                changecolor(2);
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
@@ -243,6 +243,7 @@ function changecolor(boxIndex) {
 
     switch (boxIndex) {
         case (1):
+        //alles gleich außer orange soll anders sein
             box1.style.backgroundColor = "#FFB347";
             box2.style.backgroundColor = "#FDFD96";
             box3.style.backgroundColor = "#6A93B0";
