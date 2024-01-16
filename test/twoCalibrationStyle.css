@@ -24,13 +24,13 @@ button {
 
 /* Navbar styling */
 #webgazerNavbar {
-    /*left: 320px;
+    left: 320px;
     width: calc(100% - 320px);
     z-index: 0;
     box-shadow: 0px 3px 5px #ddd;
     border:0px;
-    background-color: #fff;*/
-    display: none !important; 
+    background-color: #fff;
+    display: none !important;
 }
 
 #Accuracy a{
@@ -148,25 +148,12 @@ html, body {
   
   .box1 {
     grid-column: 1 / 2; /* Erste Spalte */
-    grid-row: 1 / 2; /* Erste Zeile */
     background-color: orange; /* Hintergrundfarbe für Box 1 */
   }
   
   .box2 {
     grid-column: 2 / 3; /* Zweite Spalte */
-    grid-row: 1 / 2; /* Erste Zeile */
     background-color: yellow; /* Hintergrundfarbe für Box 2 */
   }
 
-  .box3 {
-    grid-column: 1 / 2; /* Erste Spalte */
-    grid-row: 2 / 3; /* Zweite Zeile */
-    background-color: blue; /* Hintergrundfarbe für Box 3 */
-  }
-  
-  .box4 {
-    grid-column: 2 / 3; /* Zweite Spalte */
-    grid-row: 2 / 3; /* Zweite Zeile */
-    background-color: green; /* Hintergrundfarbe für Box 4 */
-  }
-  
+

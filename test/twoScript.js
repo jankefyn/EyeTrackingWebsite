@@ -209,7 +209,7 @@ function playAudio(data) {
             changeLoop(0, 1);
             changecolor(1);
         }
-        else {
+        else if (data.x > canvas.width / 2) {
             changeLoop(lastPlayed, 0);
             changeLoop(1, 1);
             changecolor(2);
