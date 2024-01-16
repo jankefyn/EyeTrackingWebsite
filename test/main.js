@@ -211,24 +211,24 @@ function playAudio(data) {
             if (data.y > canvas.height / 2 && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
-                changecolor(1);
+                changecolor(3);
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
-                changecolor(3);
+                changecolor(1);
             }
         }
         else {
             if (data.y > canvas.height / 2 && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
-                changecolor(2);
+                changecolor(4);
             }
             if (data.y <= canvas.height / 2 && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
-                changecolor(4);
+                changecolor(2);
             }
         }
     }
