@@ -178,6 +178,7 @@ function changeLoop(index, checker) {
             console.log("ich versuche zu starten " + index);
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
+            
         } else if (checker === 0 && loop.isPlaying) {
             console.log("ich versuche zu stoppen " + index);
             loop.stop(time);

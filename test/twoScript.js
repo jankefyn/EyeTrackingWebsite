@@ -178,6 +178,7 @@ function changeLoop(index, checker) {
             console.log("ich versuche zu starten " + index);
             loop.start(time, syncLoopPhase);
             lastPlayed = index;
+
         } else if (checker === 0 && loop.isPlaying) {
             console.log("ich versuche zu stoppen " + index);
             loop.stop(time);
@@ -204,12 +205,12 @@ function playAudio(data) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     if (data != null) {
-        if (data.x <= canvas.width / 2) {
+        if (data.x <= canvas.width / 2 && lastPlayed != 0) {
             changeLoop(lastPlayed, 0);
             changeLoop(0, 1);
             changecolor(1);
         }
-        else if (data.x > canvas.width / 2) {
+        else if (data.x > canvas.width / 2 && lastPlayed != 1) {
             changeLoop(lastPlayed, 0);
             changeLoop(1, 1);
             changecolor(2);
