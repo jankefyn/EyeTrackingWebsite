@@ -29,7 +29,7 @@ let gainNode = null;
 const WIDTH = window.innerWidth;
 const HEIGHT = window.innerHeight;
 const initialVol = 0.001;
-const maxFreq = 6000;
+const maxFreq = 3000;
 const maxVol = 0.02;
 
 function playAudio(data) {
@@ -47,7 +47,7 @@ function playAudio(data) {
 
 function setAudio() {
 
-    console.log("hallo ich bin hier");
+    
     // create web audio api context
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioCtx = new AudioContext();
