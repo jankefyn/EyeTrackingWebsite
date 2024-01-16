@@ -130,15 +130,11 @@ html, body {
     margin: 0;
   }
   
-  /* Verwende CSS-Grid, um den Bildschirm in 4 Teile zu unterteilen */
-  .container {
+  /* Verwende CSS-Grid, um den Bildschirm in 2 Teile zu unterteilen */
+.container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Zwei Spalten */
-    grid-template-rows: 1fr 1fr; /* Zwei Zeilen */
     height: 100%; /* Nimm die gesamte Höhe des Bildschirms ein */
-    width: 100%!important;
-    margin: 0 !important ;
-    padding: 0 !important ;
   }
   
   /* Stile für die einzelnen Boxen */
@@ -148,12 +144,11 @@ html, body {
   
   .box1 {
     grid-column: 1 / 2; /* Erste Spalte */
-    background-color: orange; /* Hintergrundfarbe für Box 1 */
+    background-color: red; /* Hintergrundfarbe für Box 1 */
   }
   
   .box2 {
     grid-column: 2 / 3; /* Zweite Spalte */
-    background-color: yellow; /* Hintergrundfarbe für Box 2 */
+    background-color: blue; /* Hintergrundfarbe für Box 2 */
   }
-
 
