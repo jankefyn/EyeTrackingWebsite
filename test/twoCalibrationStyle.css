@@ -134,7 +134,8 @@ html, body {
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Zwei Spalten */
-    height: 100%; /* Nimm die gesamte Höhe des Bildschirms ein */
+    grid-template-rows: 1fr; /* Nur eine Zeile */
+    height: 100%;
   }
   
   /* Stile für die einzelnen Boxen */
