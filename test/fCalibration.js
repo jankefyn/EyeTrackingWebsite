@@ -21,8 +21,8 @@ function ClearCanvas(){
 function PopUpInstruction(){
   ClearCanvas();
   swal({
-    title:"Calibration",
-    text: "Please click on each of the 9 points on the screen. You must click on each point 5 times till it goes yellow. This will calibrate your eye movements.",
+    title:"Kalibrierung",
+    text: "Bitte klicken Sie auf jeden der 9 Punkte auf dem Bildschirm. Sie müssen jeden Punkt 5 Mal anklicken, bis er gelb wird. Dadurch werden Ihre Augenbewegungen kalibriert.",
     buttons:{
       cancel: false,
       confirm: true
@@ -47,8 +47,8 @@ function calcAccuracy() {
     // show modal
     // notification for the measurement process
     swal({
-        title: "Calculating measurement",
-        text: "Please don't move your mouse & stare at the middle dot for the next 5 seconds. This will allow us to calculate the accuracy of our predictions.",
+        title: "Berechnung der Messung",
+        text: "Bitte bewegen Sie Ihre Maus nicht und starren Sie für die nächsten 5 Sekunden auf den mittleren Punkt. Dadurch können wir die Genauigkeit der Vorhersagen berechnen.",
         closeOnEsc: false,
         allowOutsideClick: false,
         closeModal: true
