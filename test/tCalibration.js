@@ -65,10 +65,10 @@ function calcAccuracy() {
       var accuracyLabel = "<a>Accuracy | " + precision_measurement + "%</a>";
       document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show the accuracy in the nav bar.
       swal({
-        title: "Your accuracy measure is " + precision_measurement + "%",
+        title: "Die Messgenauigkeit liegt bei" + precision_measurement + "%",
         allowOutsideClick: false,
         buttons: {
-          cancel: "Recalibrate",
+          cancel: "Rekalibrieren",
           confirm: true,
         }
       }).then(isConfirm => {
