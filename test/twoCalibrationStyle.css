@@ -136,7 +136,7 @@ html, body {
     grid-template-columns: 1fr 1fr; /* Zwei Spalten */
     grid-template-rows: 1fr; /* Nur eine Zeile */
     height: 100%;
-    padding: 0;
+    padding: 0!important;
   }
   
   /* Stile für die einzelnen Boxen */
