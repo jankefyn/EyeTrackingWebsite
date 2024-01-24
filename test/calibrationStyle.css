@@ -149,7 +149,7 @@ html, body {
   .box1 {
     grid-column: 1 / 2; /* Erste Spalte */
     grid-row: 1 / 2; /* Erste Zeile */
-    background-color: orange; /* Hintergrundfarbe für Box 1 */
+    background-color: red; /* Hintergrundfarbe für Box 1 */
   }
   
   .box2 {
