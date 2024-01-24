@@ -226,12 +226,12 @@ function changecolor(boxIndex) {
     switch (boxIndex) {
         case (1):
             //alles gleich außer orange soll anders sein
-            box1.style.backgroundColor = "#FFB347";
-            box2.style.backgroundColor = "#FDFD96";
+            box1.style.backgroundColor = "#fd51ff";
+            box2.style.backgroundColor = "#69ff52";
             break;
         case (2):
-            box1.style.backgroundColor = "#EFBE7D";
-            box2.style.backgroundColor = "#FFFF00";
+            box1.style.backgroundColor = "#8c0091";
+            box2.style.backgroundColor = "#008611";
             break;
     }
 
