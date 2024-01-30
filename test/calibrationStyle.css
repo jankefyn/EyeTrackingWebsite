@@ -137,39 +137,35 @@ html, body {
   
  /* Style for the individual circles */
 .circle {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border: 1px solid #000; /* Add a border to make the circles visible */
     border-radius: 50%; /* Create a circle using border-radius */
     position: absolute;
 }
 
 .circle1 {
-    top: 20;
-    left: 20;
+    top: 20px;
+    left: 20px;
     background-color: red; /* Background color for Circle 1 */
    
 }
 
 .circle2 {
-    top: 20;
-    right: 20;
+    top: 20px;
+    right: 20px;
     background-color: yellow; /* Background color for Circle 2 */
-
 }
 
 .circle3 {
-    bottom: 20;
-    left: 20;
+    bottom: 20px;
+    left: 20px;
     background-color: blue; /* Background color for Circle 3 */
-
 }
-
 .circle4 {
-    bottom: 20;
-    right: 20;
+    bottom: 20px;
+    right: 20px;
     background-color: green; /* Background color for Circle 4 */
- 
 }
 
 .circle5 {
