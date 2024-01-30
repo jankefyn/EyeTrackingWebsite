@@ -133,35 +133,39 @@ html, body {
   
  /* Style for the individual circles */
 .circle {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border: 1px solid #000; /* Add a border to make the circles visible */
     border-radius: 50%; /* Create a circle using border-radius */
     position: absolute;
 }
 
 .circle1 {
-    top: 0;
-    left: 0;
+    top: 20;
+    left: 20;
     background-color: red; /* Background color for Circle 1 */
+    z-index: -3!important;
 }
 
 .circle2 {
-    top: 0;
-    right: 0;
+    top: 20;
+    right: 20;
     background-color: yellow; /* Background color for Circle 2 */
+    z-index: -3!important;
 }
 
 .circle3 {
-    bottom: 0;
-    left: 0;
+    bottom: 20;
+    left: 20;
     background-color: blue; /* Background color for Circle 3 */
+    z-index: -3!important;
 }
 
 .circle4 {
-    bottom: 0;
-    right: 0;
+    bottom: 20;
+    right: 20;
     background-color: green; /* Background color for Circle 4 */
+    z-index: -3!important;
 }
 
 .circle5 {
@@ -169,4 +173,5 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: grey; /* Background color for Circle 5 */
+    z-index: -3!important;
 }
