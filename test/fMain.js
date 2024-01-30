@@ -216,30 +216,38 @@ function playAudio(data) {
         var centerY = canvas.height / 2;
         var zoneWidth = canvas.width * 0.35;
         var zoneHeight = canvas.height * 0.35;
+        var histereseX = canvas.width * 0.1;
+        var histereseY = canvas.width * 0.1;
 
         if (data.x <= centerX - zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
                 changeColor(3);
+                centerX = canvas.width / 2 + histereseX;
+                centerY = canvas.height / 2 - histereseY;
 
             } else if (data.y <= centerY && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
                 changeColor(1);
-
+                centerX = canvas.width / 2 + histereseX;
+                centerY = canvas.height / 2 + histereseY;
             }
         } else if (data.x >= centerX + zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
                 changeColor(4);
+                centerX = canvas.width / 2 - histereseX;
+                centerY = canvas.height / 2 - histereseY;
 
             } else if (data.y <= centerY && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
                 changeColor(2);
-
+                centerX = canvas.width / 2 - histereseX;
+                centerY = canvas.height / 2 + histereseY;
             }
         } else if (
             data.x >= centerX - zoneWidth / 2 &&
