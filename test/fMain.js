@@ -54,7 +54,7 @@ const sounds = ['../test/sounds/amChord.wav', '../test/sounds/dChord.wav', '../t
 const levels = [0, 0, 0, 0];
 const loops = [];
 const activeLoops = new Set();
-const fadeTime = 0.150;
+const fadeTime = 0.5;
 
 let loopStartTime = 0;
 let lastPlayed = 0;
@@ -161,30 +161,38 @@ async function loadLoops() {
 
 
 function changeLoop(index, checker) {
-    const loop = loops[index];
-    if (audioContext === null)
-        audioContext = new AudioContext();
 
-    if (loop) {
-        const time = audioContext.currentTime;
-        let syncLoopPhase = true;
-
-        if (activeLoops.size === 0) {
-            loopStartTime = time;
-            syncLoopPhase = false;
-            window.requestAnimationFrame(displayIntensity);
+    if (index = 4) {
+        if (lastPlayed != 4) {
+            changeLoop(lastPlayed, 0);
         }
-        if (checker === 1 && !loop.isPlaying) {
-            console.log("ich versuche zu starten " + index);
-            loop.start(time, syncLoopPhase);
-            lastPlayed = index;
-            
-        } else if (checker === 0 && loop.isPlaying) {
-            console.log("ich versuche zu stoppen " + index);
-            loop.stop(time);
-        }
-
+        lastPlayed = 4;
     }
+    else {
+        const loop = loops[index];
+        if (audioContext === null)
+            audioContext = new AudioContext();
+        if (loop) {
+            const time = audioContext.currentTime;
+            let syncLoopPhase = true;
+
+            if (activeLoops.size === 0) {
+                loopStartTime = time;
+                syncLoopPhase = false;
+                window.requestAnimationFrame(displayIntensity);
+            }
+            if (checker === 1 && !loop.isPlaying) {
+                console.log("ich versuche zu starten " + index);
+                loop.start(time, syncLoopPhase);
+                lastPlayed = index;
+
+            } else if (checker === 0 && loop.isPlaying) {
+                console.log("ich versuche zu stoppen " + index);
+                loop.stop(time);
+            }
+        }
+    }
+
 }
 
 function displayIntensity() {
@@ -205,31 +213,42 @@ function playAudio(data) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-
-
     if (data != null) {
-        if (data.x <= canvas.width / 2) {
-            if (data.y > canvas.height / 2 && lastPlayed != 0) {
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        var zoneWidth = canvas.width * 0.2;
+        var zoneHeight = canvas.height * 0.2;
+
+        if (data.x <= centerX - zoneWidth / 2) {
+            if (data.y > centerY && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
                 changecolor(3);
-            }
-            if (data.y <= canvas.height / 2 && lastPlayed != 1) {
+            } else if (data.y <= centerY && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
                 changecolor(1);
             }
-        }
-        else {
-            if (data.y > canvas.height / 2 && lastPlayed != 2) {
+        } else if (data.x >= centerX + zoneWidth / 2) {
+            if (data.y > centerY && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
                 changecolor(4);
-            }
-            if (data.y <= canvas.height / 2 && lastPlayed != 3) {
+            } else if (data.y <= centerY && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
                 changecolor(2);
+            }
+        } else if (
+            data.x >= centerX - zoneWidth / 2 &&
+            data.x <= centerX + zoneWidth / 2 &&
+            data.y >= centerY - zoneHeight / 2 &&
+            data.y <= centerY + zoneHeight / 2
+        ) {
+            // In the center zone
+            if (lastPlayed != 4) {
+                changeLoop(4, 1);
+                // Add logic for color change in the center zone
             }
         }
     }
@@ -244,7 +263,7 @@ function changecolor(boxIndex) {
 
     switch (boxIndex) {
         case (1):
-        //alles gleich außer orange soll anders sein
+            //alles gleich außer orange soll anders sein
             box1.style.backgroundColor = "#880000";
             box2.style.backgroundColor = "#FDFD96";
             box3.style.backgroundColor = "#6A93B0";
