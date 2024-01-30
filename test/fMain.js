@@ -214,39 +214,39 @@ function playAudio(data) {
     if (data != null) {
         var centerX = canvas.width / 2;
         var centerY = canvas.height / 2;
-        var zoneWidth = canvas.width * 0.2;
-        var zoneHeight = canvas.height * 0.2;
+        var zoneWidth = canvas.width * 0.35;
+        var zoneHeight = canvas.height * 0.35;
 
         if (data.x <= centerX - zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
                 changecolor(3);
-                
+
             } else if (data.y <= centerY && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
                 changecolor(1);
-                
+
             }
         } else if (data.x >= centerX + zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
                 changecolor(4);
-               
+
             } else if (data.y <= centerY && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
                 changecolor(2);
-                
+
             }
         } else if (
             data.x >= centerX - zoneWidth / 2 &&
             data.x <= centerX + zoneWidth / 2 &&
             data.y >= centerY - zoneHeight / 2 &&
             data.y <= centerY + zoneHeight / 2
-            ) {
+        ) {
             // In the center zone
             if (lastPlayed != 4) {
                 changeLoop(lastPlayed, 0);
@@ -259,36 +259,48 @@ function playAudio(data) {
 
 function changecolor(boxIndex) {
     //switch the box colours with the boxIndex and if not active switch back
-    const box1 = document.querySelector('.box1');
-    const box2 = document.querySelector('.box2');
-    const box3 = document.querySelector('.box3');
-    const box4 = document.querySelector('.box4');
+    const circle1 = document.querySelector('.circle1');
+    const circle2 = document.querySelector('.circle2');
+    const circle3 = document.querySelector('.circle3');
+    const circle4 = document.querySelector('.circle4');
+    const circle5 = document.querySelector('.circle5');
 
     switch (boxIndex) {
         case (1):
             //alles gleich außer orange soll anders sein
-            box1.style.backgroundColor = "#880000";
-            box2.style.backgroundColor = "#FDFD96";
-            box3.style.backgroundColor = "#6A93B0";
-            box4.style.backgroundColor = "#77DD77";
+            circle1.style.backgroundColor = "#880000";
+            circle2.style.backgroundColor = "#FDFD96";
+            circle3.style.backgroundColor = "#6A93B0";
+            circle4.style.backgroundColor = "#77DD77";
+            circle5.style.backgroundColor = "#808080";
             break;
         case (2):
-            box1.style.backgroundColor = "#ffb9b9";
-            box2.style.backgroundColor = "#FFFF00";
-            box3.style.backgroundColor = "#6A93B0";
-            box4.style.backgroundColor = "#77DD77";
+            circle1.style.backgroundColor = "#ffb9b9";
+            circle2.style.backgroundColor = "#FFFF00";
+            circle3.style.backgroundColor = "#6A93B0";
+            circle4.style.backgroundColor = "#77DD77";
+            circle5.style.backgroundColor = "#808080";
             break;
         case (3):
-            box1.style.backgroundColor = "#ffb9b9";
-            box2.style.backgroundColor = "#FDFD96";
-            box3.style.backgroundColor = "#0000FF";
-            box4.style.backgroundColor = "#77DD77";
+            circle1.style.backgroundColor = "#ffb9b9";
+            circle2.style.backgroundColor = "#FDFD96";
+            circle3.style.backgroundColor = "#0000FF";
+            circle4.style.backgroundColor = "#77DD77";
+            circle5.style.backgroundColor = "#808080";
             break;
         case (4):
-            box1.style.backgroundColor = "#ffb9b9";
-            box2.style.backgroundColor = "#FDFD96";
-            box3.style.backgroundColor = "#6A93B0";
-            box4.style.backgroundColor = "#008000";
+            circle1.style.backgroundColor = "#ffb9b9";
+            circle2.style.backgroundColor = "#FDFD96";
+            circle3.style.backgroundColor = "#6A93B0";
+            circle4.style.backgroundColor = "#008000";
+            circle5.style.backgroundColor = "#808080";
+            break;
+        case (5):
+            circle1.style.backgroundColor = "#ffb9b9";
+            circle2.style.backgroundColor = "#FDFD96";
+            circle3.style.backgroundColor = "#6A93B0";
+            circle4.style.backgroundColor = "#77DD77";
+            circle5.style.backgroundColor = "#ffffff";
             break;
 
     }

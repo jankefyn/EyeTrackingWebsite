@@ -128,48 +128,45 @@ li {
 html, body {
     height: 100%;
     margin: 0;
+    background-color: #000;
   }
   
-  /* Verwende CSS-Grid, um den Bildschirm in 4 Teile zu unterteilen */
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Zwei Spalten */
-    grid-template-rows: 1fr 1fr; /* Zwei Zeilen */
-    height: 100%; /* Nimm die gesamte Höhe des Bildschirms ein */
-    width: 100%!important;
-    margin: 0 !important ;
-    padding: 0 !important ;
-  }
-  
-/* Style for the individual boxes */
-.box {
-    border: 1px solid #000; /* Add a border to make the boxes visible */
+ /* Style for the individual circles */
+.circle {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000; /* Add a border to make the circles visible */
+    border-radius: 50%; /* Create a circle using border-radius */
+    position: absolute;
 }
 
-.box1 {
-    grid-column: 1 / 2; /* First column */
-    grid-row: 1 / 2; /* First row */
-    background-color: red; /* Background color for Box 1 */
+.circle1 {
+    top: 0;
+    left: 0;
+    background-color: red; /* Background color for Circle 1 */
 }
 
-.box2 {
-    grid-column: 2 / 3; /* Second column */
-    grid-row: 1 / 2; /* First row */
-    background-color: yellow; /* Background color for Box 2 */
+.circle2 {
+    top: 0;
+    right: 0;
+    background-color: yellow; /* Background color for Circle 2 */
 }
 
-.box3 {
-    grid-column: 1 / 2; /* First column */
-    grid-row: 2 / 3; /* Second row */
-    background-color: blue; /* Background color for Box 3 */
+.circle3 {
+    bottom: 0;
+    left: 0;
+    background-color: blue; /* Background color for Circle 3 */
 }
 
-.box4 {
-    grid-column: 2 / 3; /* Second column */
-    grid-row: 2 / 3; /* Second row */
-    background-color: green; /* Background color for Box 4 */
+.circle4 {
+    bottom: 0;
+    right: 0;
+    background-color: green; /* Background color for Circle 4 */
 }
 
-
-
-  
+.circle5 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: grey; /* Background color for Circle 5 */
+}
