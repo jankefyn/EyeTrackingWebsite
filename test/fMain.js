@@ -163,9 +163,7 @@ async function loadLoops() {
 function changeLoop(index, checker) {
 
     if (index = 4) {
-        if (lastPlayed != 4) {
-            changeLoop(lastPlayed, 0);
-        }
+        console.log("es sollte still sein");
         lastPlayed = 4;
     }
     else {
@@ -247,6 +245,7 @@ function playAudio(data) {
         ) {
             // In the center zone
             if (lastPlayed != 4) {
+                changeLoop(lastPlayed, 0);
                 changeLoop(4, 1);
                 // Add logic for color change in the center zone
             }
