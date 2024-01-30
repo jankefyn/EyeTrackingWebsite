@@ -221,24 +221,24 @@ function playAudio(data) {
             if (data.y > centerY && lastPlayed != 0) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
-                changecolor(3);
+                changeColor(3);
 
             } else if (data.y <= centerY && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
-                changecolor(1);
+                changeColor(1);
 
             }
         } else if (data.x >= centerX + zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
-                changecolor(4);
+                changeColor(4);
 
             } else if (data.y <= centerY && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
-                changecolor(2);
+                changeColor(2);
 
             }
         } else if (
@@ -251,13 +251,13 @@ function playAudio(data) {
             if (lastPlayed != 4) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(4, 1);
-                // Add logic for color change in the center zone
+                changeColor(5);
             }
         }
     }
 }
 
-function changecolor(boxIndex) {
+function changeColor(boxIndex) {
     //switch the box colours with the boxIndex and if not active switch back
     const circle1 = document.querySelector('.circle1');
     const circle2 = document.querySelector('.circle2');
