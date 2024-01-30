@@ -208,7 +208,6 @@ function decibelToLinear(val) {
 
 function playAudio(data) {
     var canvas = document.getElementById("plotting_canvas");
-    let firstplayed = false;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -223,31 +222,31 @@ function playAudio(data) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(0, 1);
                 changecolor(3);
-                firstplayed = true;
+                
             } else if (data.y <= centerY && lastPlayed != 1) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(1, 1);
                 changecolor(1);
-                firstplayed = true;
+                
             }
         } else if (data.x >= centerX + zoneWidth / 2) {
             if (data.y > centerY && lastPlayed != 2) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(2, 1);
                 changecolor(4);
-                firstplayed = true;
+               
             } else if (data.y <= centerY && lastPlayed != 3) {
                 changeLoop(lastPlayed, 0);
                 changeLoop(3, 1);
                 changecolor(2);
-                firstplayed = true;
+                
             }
         } else if (
             data.x >= centerX - zoneWidth / 2 &&
             data.x <= centerX + zoneWidth / 2 &&
             data.y >= centerY - zoneHeight / 2 &&
             data.y <= centerY + zoneHeight / 2 &&
-            firstplayed == true
+            
         ) {
             // In the center zone
             if (lastPlayed != 4) {
