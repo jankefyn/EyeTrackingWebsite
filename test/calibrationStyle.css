@@ -80,8 +80,11 @@ li {
     border-color: black;
     border-style: solid;
     position:fixed;
+    z-index:1;
 }
-
+#plotting_canvas{
+    background-color:black!important;
+}
 /* Calibration point position */
 #Pt1{
     top: 70px;
@@ -145,28 +148,28 @@ html, body {
     top: 20;
     left: 20;
     background-color: red; /* Background color for Circle 1 */
-    z-index: -3!important;
+   
 }
 
 .circle2 {
     top: 20;
     right: 20;
     background-color: yellow; /* Background color for Circle 2 */
-    z-index: -3!important;
+
 }
 
 .circle3 {
     bottom: 20;
     left: 20;
     background-color: blue; /* Background color for Circle 3 */
-    z-index: -3!important;
+
 }
 
 .circle4 {
     bottom: 20;
     right: 20;
     background-color: green; /* Background color for Circle 4 */
-    z-index: -3!important;
+ 
 }
 
 .circle5 {
@@ -174,5 +177,4 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: grey; /* Background color for Circle 5 */
-    z-index: -3!important;
 }
