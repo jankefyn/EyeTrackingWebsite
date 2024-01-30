@@ -162,9 +162,9 @@ async function loadLoops() {
 
 function changeLoop(index, checker) {
 
-    if (index = 4) {
+    if (index === 4) {
         console.log("es sollte still sein");
-        lastPlayed = 4;
+        lastPlayed = index;
     }
     else {
         const loop = loops[index];
