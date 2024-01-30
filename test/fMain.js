@@ -245,9 +245,8 @@ function playAudio(data) {
             data.x >= centerX - zoneWidth / 2 &&
             data.x <= centerX + zoneWidth / 2 &&
             data.y >= centerY - zoneHeight / 2 &&
-            data.y <= centerY + zoneHeight / 2 &&
-            
-        ) {
+            data.y <= centerY + zoneHeight / 2
+            ) {
             // In the center zone
             if (lastPlayed != 4) {
                 changeLoop(lastPlayed, 0);
