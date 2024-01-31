@@ -148,8 +148,8 @@ html, body {
 .circle1 {
     top: 20px;
     left: 20px;
-    padding-top: 55px;
-    padding-left: 55px;
+    padding-top: 23px;
+    padding-left: 38px;
     background-color: red; /* Background color for Circle 1 */
    
 }
@@ -157,31 +157,31 @@ html, body {
 .circle2 {
     top: 20px;
     right: 20px;
-    padding-top: 55px;
-    padding-left: 55px;
+    padding-top: 23px;
+    padding-left: 38px;
     background-color: yellow; /* Background color for Circle 2 */
 }
 
 .circle3 {
     bottom: 20px;
     left: 20px;
-    padding-top: 55px;
-    padding-left: 55px;
+    padding-top: 23px;
+    padding-left: 38px;
     background-color: blue; /* Background color for Circle 3 */
 }
 .circle4 {
     bottom: 20px;
     right: 20px;
-    padding-top: 55px;
-    padding-left: 55px;
+    padding-top: 23px;
+    padding-left: 38px;
     background-color: green; /* Background color for Circle 4 */
 }
 
 .circle5 {
     top: 50%;
     left: 50%;
-    padding-top: 55px;
-    padding-left: 55px;
+    padding-top: 23px;
+    padding-left: 38px;
     transform: translate(-50%, -50%);
     background-color: grey; /* Background color for Circle 5 */
 }
