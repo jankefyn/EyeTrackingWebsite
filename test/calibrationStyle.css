@@ -142,7 +142,7 @@ html, body {
     border: 1px solid #000; /* Add a border to make the circles visible */
     border-radius: 50%; /* Create a circle using border-radius */
     position: absolute;
-    font-size: 50px; /* Adjust font size for emojis */
+    font-size: 70px; /* Adjust font size for emojis */
 }
 
 .circle1 {
