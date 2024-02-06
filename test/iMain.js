@@ -312,4 +312,5 @@ function changeColor(boxIndex) {
             break;
 
     }
+
 }
