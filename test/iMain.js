@@ -50,7 +50,7 @@ function Restart() {
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext = null;
 
-const sounds = ['../test/sounds/amChord.wav', '../test/sounds/dChord.wav', '../test/sounds/fChord.wav', '../test/sounds/gChord.wav'];
+const sounds = ['../test/sounds/trumpet.wav', '../test/sounds/drummer.wav', '../test/sounds/guitar.wav', '../test/sounds/string.wav'];
 const levels = [0, 0, 0, 0];
 const loops = [];
 const activeLoops = new Set();
