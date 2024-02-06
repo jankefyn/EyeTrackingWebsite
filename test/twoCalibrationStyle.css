@@ -131,26 +131,39 @@ html, body {
   }
   
   /* Verwende CSS-Grid, um den Bildschirm in 2 Teile zu unterteilen */
+  /*
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Zwei Spalten */
-    grid-template-rows: 1fr; /* Nur eine Zeile */
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr; 
     height: 100%;
     padding: 0!important;
   }
-  
-  /* Stile für die einzelnen Boxen */
-  .box {
-    border: 1px solid #000; /* Füge einen Rand hinzu, um die einzelnen Boxen sichtbar zu machen */
-  }
-  
-  .box1 {
-    grid-column: 1 / 2; /* Erste Spalte */
-    background-color: green; /* Hintergrundfarbe für Box 1 */
-  }
-  
-  .box2 {
-    grid-column: 2 / 3; /* Zweite Spalte */
-    background-color: red; /* Hintergrundfarbe für Box 2 */
-  }
+*/
+ /* Style for the individual circles */
+ .circle {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #000; /* Add a border to make the circles visible */
+    border-radius: 50%; /* Create a circle using border-radius */
+    position: absolute;
+    font-size: 70px; /* Adjust font size for emojis */
+}
+
+.circle1 {
+    top: 20px;
+    left: 20px;
+    padding-top: 23px;
+    padding-left: 38px;
+    background-color: red; /* Background color for Circle 1 */
+   
+}
+
+.circle2 {
+    top: 20px;
+    right: 20px;
+    padding-top: 23px;
+    padding-left: 38px;
+    background-color: yellow; /* Background color for Circle 2 */
+}
 
