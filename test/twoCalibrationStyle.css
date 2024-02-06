@@ -156,8 +156,8 @@ html, body {
 }
 
 .circle1 {
-    top: 50%;
-    left: 25%;
+    top: 42%;
+    left: 20%;
     padding-top: 23px;
     padding-left: 38px;
     background-color: green; /* Background color for Circle 1 */
@@ -165,8 +165,8 @@ html, body {
 }
 
 .circle2 {
-    top: 50%;
-    right: 25%;
+    top: 42%;
+    right: 20%;
     padding-top: 23px;
     padding-left: 38px;
     background-color: red; /* Background color for Circle 2 */
