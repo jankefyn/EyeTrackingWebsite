@@ -221,17 +221,17 @@ function playAudio(data) {
 
 function changecolor(boxIndex) {
     //switch the box colours with the boxIndex and if not active switch back
-    const box1 = document.querySelector('.box1');
-    const box2 = document.querySelector('.box2');
+    const circle1 = document.querySelector('.circle1');
+    const circle2 = document.querySelector('.circle2');
     switch (boxIndex) {
         case (1):
             //alles gleich außer orange soll anders sein
-            box1.style.backgroundColor = "#69ff52";
-            box2.style.backgroundColor = "#b51800";
+            circle1.style.backgroundColor = "#69ff52";
+            circle2.style.backgroundColor = "#b51800";
             break;
         case (2):
-            box1.style.backgroundColor = "#008611";
-            box2.style.backgroundColor = "#ff5e51";
+            circle1.style.backgroundColor = "#008611";
+            circle2.style.backgroundColor = "#ff5e51";
             break;
     }
 

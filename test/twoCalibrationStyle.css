@@ -1,5 +1,6 @@
 body {
     min-width:600px!important;
+    background-color: #000;
 }
 
 button {
@@ -79,6 +80,7 @@ li {
     border-color: black;
     border-style: solid;
     position:fixed;
+    z-index: 2;
 }
 
 /* Calibration point position */
@@ -151,19 +153,19 @@ html, body {
 }
 
 .circle1 {
-    top: 20px;
-    left: 20px;
+    top: 50%;
+    left: 25%;
     padding-top: 23px;
     padding-left: 38px;
-    background-color: red; /* Background color for Circle 1 */
+    background-color: green; /* Background color for Circle 1 */
    
 }
 
 .circle2 {
-    top: 20px;
-    right: 20px;
+    top: 50%;
+    right: 25%;
     padding-top: 23px;
     padding-left: 38px;
-    background-color: yellow; /* Background color for Circle 2 */
+    background-color: red; /* Background color for Circle 2 */
 }
 
