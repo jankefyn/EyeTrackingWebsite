@@ -13,6 +13,9 @@ button {
  * webgazer.js sets defaults for: display, position, top, left, width, height
  */
 }
+#plotting_canvas{
+    background-color:black!important;
+}
 #webgazerVideoContainer {
     display: block !important; 
     position: fixed !important;
