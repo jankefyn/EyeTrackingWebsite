@@ -43,9 +43,7 @@ function Restart() {
 }
 
 
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-//new audio
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioContext = null;
@@ -60,9 +58,6 @@ let loopStartTime = 0;
 let lastPlayed = 0;
 
 
-
-
-/***************************************************************************/
 
 class Loop {
     constructor(buffer, level = 0) {
